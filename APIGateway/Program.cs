@@ -12,7 +12,7 @@ builder.Configuration.AddJsonFile("ocelot.json");
 
 // Настройка аутентификации JWT
 var key = Encoding.ASCII.GetBytes("SuperSecretKey12345");
-
+builder.Services.AddHttpClient();
 builder.Services.AddAuthentication(options =>
     {
         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

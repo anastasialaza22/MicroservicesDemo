@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ProductService.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ProductController : ControllerBase
@@ -68,6 +67,13 @@ namespace ProductService.Controllers
             _service.DeleteProduct(id);
             
             return NoContent();
+        }
+        
+        [AllowAnonymous]
+        [HttpGet("status")]
+        public IActionResult GetStatus()
+        {
+            return Ok("Product Service is running.");
         }
     }
 }

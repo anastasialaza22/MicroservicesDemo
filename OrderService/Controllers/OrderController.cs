@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace OrderService.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class OrderController : ControllerBase
@@ -80,6 +79,13 @@ namespace OrderService.Controllers
             _service.DeleteOrder(id);
 
             return NoContent();
+        }
+        
+        [AllowAnonymous]
+        [HttpGet("status")]
+        public IActionResult GetStatus()
+        {
+            return Ok("Order Service is running.");
         }
     }
 }
